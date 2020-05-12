@@ -1,0 +1,19 @@
+{
+  "name": "nextjs-with-honeybadger",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@zeit/next-source-maps": "0.0.4-canary.1",
+    "@honeybadger-io/webpack": "^1.2.0",
+    "honeybadger": "^1.4.0",
+    "honeybadger-js": "^2.2.1",
+    "next": "latest",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
