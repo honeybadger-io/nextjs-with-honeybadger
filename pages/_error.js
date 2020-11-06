@@ -1,6 +1,6 @@
 import React from 'react'
 import Error from 'next/error'
-import * as Honeybadger from 'honeybadger'
+import * as Honeybadger from '@honeybadger-io/js'
 
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
   if (!hasGetInitialPropsRun && err) {
