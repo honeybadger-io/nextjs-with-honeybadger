@@ -6,7 +6,7 @@ import Honeybadger from '@honeybadger-io/js'
 Honeybadger.configure({
   apiKey: process.env.HONEYBADGER_API_KEY,
   revision: process.env.HONEYBADGER_REVISION,
-  disabled: process.env.NODE_ENV !== 'production'
+  environment: process.env.NODE_ENV,
 })
 
 // This is handy for testing; remove it in production.
