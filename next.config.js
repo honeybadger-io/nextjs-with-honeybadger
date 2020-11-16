@@ -8,6 +8,7 @@ const { execSync } = require('child_process');
 const {
   HONEYBADGER_API_KEY,
   HONEYBADGER_ASSETS_URL,
+  HONEYBADGER_REPORT_DATA,
   NODE_ENV,
 } = process.env
 
@@ -15,8 +16,9 @@ const HONEYBADGER_REVISION = execSync('git rev-parse HEAD').toString().trim()
 
 module.exports = withSourceMaps({
   env: {
-    HONEYBADGER_API_KEY: HONEYBADGER_API_KEY,
-    HONEYBADGER_REVISION: HONEYBADGER_REVISION,
+    HONEYBADGER_API_KEY,
+    HONEYBADGER_REVISION,
+    HONEYBADGER_REPORT_DATA,
   },
   webpack: (config, options) => {
     // When all the Honeybadger configuration env variables are
