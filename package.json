@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@honeybadger-io/js": "^3.0.0-alpha.8",
+    "@honeybadger-io/js": "^3.0.0-alpha.13",
     "@honeybadger-io/webpack": "^1.2.0",
     "@zeit/next-source-maps": "0.0.4-canary.1",
     "next": "latest",
