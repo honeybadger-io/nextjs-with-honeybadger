@@ -7,7 +7,9 @@ Honeybadger.configure({
   apiKey: process.env.HONEYBADGER_API_KEY,
   revision: process.env.HONEYBADGER_REVISION,
   environment: process.env.NODE_ENV,
-  reportData: process.env.HONEYBADGER_REPORT_DATA === 'true',
+
+  // Uncomment to report errors in development:
+  reportData: true,
 })
 
 // This is handy for testing; remove it in production.
