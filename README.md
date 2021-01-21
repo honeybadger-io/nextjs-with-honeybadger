@@ -56,7 +56,7 @@ Deploy to [Vercel](https://vercel.com):
 You must add the following configuration values when deploying:
 
 - `HONEYBADGER_API_KEY` - The API key from your **project settings page** in [Honeybadger](https://app.honeybadger.io).
-- `HONEYBADGER_ASSETS_URL` - Required by [honeybadger-webpack](https://github.com/honeybadger-io/honeybadger-webpack#configuration) to upload source maps to Honeybadger. Replace the `[your app name]` with the name of your Vercel app: `https://[your app name].vercel.app/_next`
+- `HONEYBADGER_ASSETS_URL` - Required by [honeybadger-webpack](https://github.com/honeybadger-io/honeybadger-webpack#configuration) to upload source maps to Honeybadger. Replace the `[your app name]` with the name of your Vercel project: `https://[your app name].vercel.app/_next`
 
 ## Notes
 
