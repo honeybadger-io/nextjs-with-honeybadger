@@ -7,6 +7,7 @@ Honeybadger.configure({
   apiKey: process.env.HONEYBADGER_API_KEY,
   revision: process.env.HONEYBADGER_REVISION,
   environment: process.env.NODE_ENV,
+  projectRoot: 'webpack://_N_E/./',
 
   // Uncomment to report errors in development:
   reportData: true,
