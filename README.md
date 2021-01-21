@@ -8,10 +8,6 @@ errors on both client + server side.
 - `_error.js` is rendered by Next.js while handling certain types of exceptions for you. It is overridden so those exceptions can be passed along to Honeybadger
 - `next.config.js` enables source maps in production and uploads them to Honeybadger
 
-Deploy to [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/honeybadger-io/nextjs-with-honeybadger&project-name=nextjs-with-honeybadger&repository-name=nextjs-with-honeybadger&env=HONEYBADGER_API_KEY&envDescription=Honeybadger%20API%20Key&envLink=https://github.com/honeybadger-io/nextjs-with-honeybadger%23getting-started)
-
 ## Getting Started
 
 Execute [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
@@ -50,6 +46,17 @@ yarn dev
 ```
 
 Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, email us at support@honeybadger.io.
+
+## Deployment
+
+Deploy to [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/honeybadger-io/nextjs-with-honeybadger&project-name=nextjs-with-honeybadger&repository-name=nextjs-with-honeybadger&env=HONEYBADGER_API_KEY,HONEYBADGER_ASSETS_URL&envDescription=Honeybadger%20API%20KEY%20and%20assets%20URL%20for%20honeybadger-webpack&envLink=https%3A%2F%2Fgithub.com%2Fhoneybadger-io%2Fnextjs-with-honeybadger%23deployment)
+
+You must add the following configuration values when deploying:
+
+- `HONEYBADGER_API_KEY` - The API key from your **project settings page** in [Honeybadger](https://app.honeybadger.io).
+- `HONEYBADGER_ASSETS_URL` - Required by [honeybadger-webpack](https://github.com/honeybadger-io/honeybadger-webpack#configuration) to upload source maps to Honeybadger. Replace the `[your app name]` with the name of your Vercel app: `https://[your app name].vercel.app/_next`
 
 ## Notes
 
