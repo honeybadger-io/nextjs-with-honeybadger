@@ -41,7 +41,7 @@ module.exports = {
         new HoneybadgerSourceMapPlugin({
           apiKey: HONEYBADGER_API_KEY,
           assetsUrl: HONEYBADGER_ASSETS_URL,
-          revision: HONEYBADGER_REVISION
+          revision: HONEYBADGER_REVISION,
         })
       )
     }
