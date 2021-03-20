@@ -10,9 +10,8 @@
   "dependencies": {
     "@honeybadger-io/js": "^3.0.0",
     "@honeybadger-io/webpack": "^1.2.0",
-    "@zeit/next-source-maps": "0.0.4-canary.1",
     "next": "latest",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": ">= 17.0.1",
+    "react-dom": ">= 17.0.1"
   }
 }
