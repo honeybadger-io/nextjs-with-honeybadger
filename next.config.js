@@ -32,7 +32,7 @@ module.exports = {
       HONEYBADGER_ASSETS_URL &&
       NODE_ENV === 'production'
     ) {
-      // `config.devtool` must be 'hidden-source-map' or 'eval-source-map'
+      // `config.devtool` must be 'hidden-source-map' or 'source-map' to properly pass sourcemaps.
       // Next.js uses regular `source-map` which doesnt pass its sourcemaps to Webpack.
       // https://github.com/vercel/next.js/blob/89ec21ed686dd79a5770b5c669abaff8f55d8fef/packages/next/build/webpack/config/blocks/base.ts#L40
       config.devtool = 'hidden-source-map'
