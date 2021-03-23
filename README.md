@@ -64,11 +64,9 @@ You must add the following configuration values when deploying:
 
 - When enabled in development mode, error handling [works differently than in production](https://nextjs.org/docs#custom-error-handling) as `_error.js` is never actually called.
 
-- The build output will contain warning about unhandled Promise rejections. This caused by the test pages, and is expected.
+- The build output will contain warning about unhandled Promise rejections. This is caused by the test pages, and is expected.
 
-- The version of `@zeit/next-source-maps` (`0.0.4-canary.1`) is important and must be specified since it is not yet the default. Otherwise [source maps will not be generated for the server](https://github.com/zeit/next-plugins/issues/377).
-
-- Both `@zeit/next-source-maps` and `@honeybadger-io/webpack` are added to dependencies (rather than `devDependencies`) is because if used with SSR (ex. heroku), these plugins are used during production for generating the source-maps and sending them to Honeybadger.
+- `@honeybadger-io/webpack` is added to `dependencies` (rather than `devDependencies`) because when used with SSR (ex. heroku), this plugin is used during production for sending the generated sourcemaps to Honeybadger.
 
 - See the [Honeybadger webpack plugin docs](https://github.com/honeybadger-io/honeybadger-webpack#configuration) and the [Using Source Maps guide](https://docs.honeybadger.io/lib/javascript/guides/using-source-maps.html) for more info about source map upload.
 
