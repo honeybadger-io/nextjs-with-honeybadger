@@ -34,11 +34,8 @@ const Index = () => (
         </li>
         <li>
           getInitialProps calls a Promise that rejects, but does not handle the
-          rejection or await its result (returning synchronously). <strong>This is the
-          only error which Honeybadger won't report.</strong> While our browser package
-          supports reporting unhandled promise rejections, our Node package
-          doesn't yet (<a href="https://github.com/honeybadger-io/honeybadger-node/issues/86">we're working on it</a>).{' '}
-          {/*  Honeybadger shouldrecord Error('Server Test 3').{' '} */}
+          rejection or await its result (returning synchronously).{' '}
+          Honeybadger shouldrecord Error('Server Test 3').{' '}
           <a href="/server/test3" target="_blank">
             Open in a new tab
           </a>
