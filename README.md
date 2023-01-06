@@ -2,7 +2,7 @@
 
 This is a simple example showing how to use
 [Honeybadger](https://www.honeybadger.io/for/javascript) to catch & report
-errors on both client + server side.
+errors on both client + server side in Next.js.
 
 - `_app.js` renders on both the server and client. It initializes Honeybadger to catch any unhandled exceptions
 - `_error.js` is rendered by Next.js while handling certain types of exceptions for you. It is overridden so those exceptions can be passed along to Honeybadger
@@ -47,6 +47,14 @@ yarn dev
 
 Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, email us at support@honeybadger.io.
 
+## Testing error reporting locally
+When enabled in development mode, error handling [works differently than in production](https://nextjs.org/docs/advanced-features/error-handling). To test error reporting locally, you should run a production build, i.e.
+
+```bash
+npm run build
+npm start
+```
+
 ## Deployment
 
 Deploy to [Vercel](https://vercel.com):
@@ -61,8 +69,6 @@ You must add the following configuration values when deploying:
 ## Notes
 
 - By default, neither sourcemaps nor error tracking is enabled in development mode (see Configuration).
-
-- When enabled in development mode, error handling [works differently than in production](https://nextjs.org/docs#custom-error-handling) as `_error.js` is never actually called.
 
 - The build output will contain warning about unhandled Promise rejections. This is caused by the test pages, and is expected.
 

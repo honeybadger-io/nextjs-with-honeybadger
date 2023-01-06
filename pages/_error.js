@@ -1,24 +1,23 @@
-import React from 'react'
 import Error from 'next/error'
 import Honeybadger from '@honeybadger-io/js'
 
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
-  if (!hasGetInitialPropsRun && err) {
-    // getInitialProps is not called in case of
-    // https://github.com/zeit/next.js/issues/8592. As a workaround, we pass
-    // err via _app.js so it can be captured
-    Honeybadger.notify(err)
-  }
-
+  // Uncomment the workaround below if using Next.js version prior to 12.2.1
+  // getInitialProps is not called in case of https://github.com/zeit/next.js/issues/8592
+  //
+  // if (!hasGetInitialPropsRun && err) {
+  //   Honeybadger.notify(err)
+  // }
   return <Error statusCode={statusCode} />
 }
 
 MyError.getInitialProps = async ({ res, err, asPath }) => {
   const errorInitialProps = await Error.getInitialProps({ res, err })
 
-  // Workaround for https://github.com/zeit/next.js/issues/8592, mark when
-  // getInitialProps has run
-  errorInitialProps.hasGetInitialPropsRun = true
+  // Uncomment the workaround below if using Next.js version prior to 12.2.1
+  // getInitialProps is not called in case of https://github.com/zeit/next.js/issues/8592
+  //
+  // errorInitialProps.hasGetInitialPropsRun = true
 
   if (res) {
     // Running on the server, the response object is available.
