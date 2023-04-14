@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@honeybadger-io/react": "^5.3.0",
-    "@honeybadger-io/nextjs": "^5.3.1",
+    "@honeybadger-io/nextjs": "^5.3.2",
     "next": "latest",
     "react": ">= 17.0.1",
     "react-dom": ">= 17.0.1"
