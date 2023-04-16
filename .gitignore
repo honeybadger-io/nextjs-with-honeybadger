@@ -1,4 +1,3 @@
-package-lock.json
 .next/
-.env*
+.env.local
 node_modules

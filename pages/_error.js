@@ -1,65 +1,37 @@
-import Error from 'next/error'
-import Honeybadger from '@honeybadger-io/js'
-
-const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
-  // Uncomment the workaround below if using Next.js version prior to 12.2.1
-  // getInitialProps is not called in case of https://github.com/zeit/next.js/issues/8592
-  //
-  // if (!hasGetInitialPropsRun && err) {
-  //   Honeybadger.notify(err)
-  // }
-  return <Error statusCode={statusCode} />
+import NextErrorComponent from 'next/error'
+import { Honeybadger } from '@honeybadger-io/react'
+/**
+ * This component is called when:
+ *  - on the server, when data fetching methods throw or reject
+ *  - on the client, when getInitialProps throws or rejects
+ *  - on the client, when a React lifecycle method (render, componentDidMount, etc) throws or rejects
+ *      and was caught by the built-in Next.js error boundary
+ */
+const CustomErrorComponent = props => {
+  return <NextErrorComponent statusCode={props.statusCode} />
 }
 
-MyError.getInitialProps = async ({ res, err, asPath }) => {
-  const errorInitialProps = await Error.getInitialProps({ res, err })
+CustomErrorComponent.getInitialProps = async contextData => {
+  const { req, res, err } = contextData
 
-  // Uncomment the workaround below if using Next.js version prior to 12.2.1
-  // getInitialProps is not called in case of https://github.com/zeit/next.js/issues/8592
-  //
-  // errorInitialProps.hasGetInitialPropsRun = true
-
-  if (res) {
-    // Running on the server, the response object is available.
-    //
-    // Next.js will pass an err on the server if a page's `getInitialProps`
-    // threw or returned a Promise that rejected
-
-    if (res.statusCode === 404) {
-      // Opinionated: do not record an exception in Honeybadger for 404
-      return { statusCode: 404 }
-    }
-
-    if (err) {
-      Honeybadger.notify(err)
-
-      return errorInitialProps
-    }
-  } else {
-    // Running on the client (browser).
-    //
-    // Next.js will provide an err if:
-    //
-    //  - a page's `getInitialProps` threw or returned a Promise that rejected
-    //  - an exception was thrown somewhere in the React lifecycle (render,
-    //    componentDidMount, etc) that was caught by Next.js's React Error
-    //    Boundary. Read more about what types of exceptions are caught by Error
-    //    Boundaries: https://reactjs.org/docs/error-boundaries.html
-    if (err) {
-      Honeybadger.notify(err)
-
-      return errorInitialProps
-    }
+  // exclude 40x except when this component is rendered from a routing error or a custom server
+  // https://nextjs.org/docs/advanced-features/custom-error-page#caveats
+  const statusCode = (res && res.statusCode) || contextData.statusCode;
+  if (statusCode && statusCode < 500) {
+    Honeybadger.config.logger.debug(`_error.js skipping because statusCode is ${statusCode}: ${req && req.url}`)
+  }
+  else {
+    await Honeybadger.notifyAsync(err || `_error.js called with falsy error (${err})`, {
+      context:
+              {
+                url: req.url,
+                method: req.method,
+                statusCode: res.statusCode,
+              }
+    })
   }
 
-  // If this point is reached, getInitialProps was called without any
-  // information about what the error might be. This is unexpected and may
-  // indicate a bug introduced in Next.js, so record it in Honeybadger
-  Honeybadger.notify(
-    new Error(`_error.js getInitialProps missing data at path: ${asPath}`)
-  )
-
-  return errorInitialProps
+  return NextErrorComponent.getInitialProps(contextData)
 }
 
-export default MyError
+export default CustomErrorComponent
