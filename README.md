@@ -1,3 +1,5 @@
+> Note: This example app has been moved to [@honeybadger-io/js](https://github.com/honeybadger-io/honeybadger-js), home to all Honeybadger's JavaScript packages. The app is under [packages/nextjs/examples/pages-router](https://github.com/honeybadger-io/honeybadger-js/tree/master/packages/nextjs/examples/pages-router). Another example app demoing support of App Router (since Next.js 13) is also [available](https://github.com/honeybadger-io/honeybadger-js/tree/master/packages/nextjs/examples/app-router).
+
 # Next.js with Honeybadger Error Reporting
 
 This is a simple example showing how to use
